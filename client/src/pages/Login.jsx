@@ -65,13 +65,18 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`
+
+
 const Login = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const {isFetching, error}  = useSelector((state) => state.user);
   const handleClick = (e) => {
-    e.preventdefault()
+    e.preventDefault()
     login(dispatch,{username, password});
   };
   return (
@@ -80,8 +85,9 @@ const Login = () => {
         <Title>SIGN IN</Title>
         <Form>
           <Input placeholder="username" onChange ={(e) => setUsername(e.target.value)}/>
-          <Input placeholder="password" onChange ={(e) => setPassword(e.target.value)} />
+          <Input placeholder="password" type = "password" onChange ={(e) => setPassword(e.target.value)} />
           <Button onClick = {handleClick} disabled ={isFetching}>LOGIN</Button>
+          {error && <Error>Something went wrong...</Error>} 
           <Link>FORGOT PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
