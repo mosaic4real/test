@@ -1,18 +1,8 @@
-import styled from "styled-components";
-
-const Container = styled.div`
-  height: 30px;
-  background-color: gray;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 500;
-`;
+import React from "react";
+import style from "./styles/announcement.module.css"
 
 const Announcement = () => {
-  return <Container>Super Deal! Free Shipping on Orders Over €2000</Container>;
+  return <div className={style.container}>Super Deal! Free Shipping on Orders Over €2000</div>;
 };
 
 export default Announcement;
