@@ -249,7 +249,7 @@ const Cart = () => {
             </SummaryItem>
               <StripeCheckout
               name= "GEMOS"
-              image = "https://avatars.githubusercontent.com/u/1486366?v=4"
+              image = "https://avatars.githubusercontent.com/u/96851290?s=40&v=4"
               billingAddress
               shippingAddress
               description= {`Your total is € ${cart.total}`}
