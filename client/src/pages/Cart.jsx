@@ -245,7 +245,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>€ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>€ {cart.total}</SummaryItemPrice>c
             </SummaryItem>
               <StripeCheckout
               name= "GEMOS"
