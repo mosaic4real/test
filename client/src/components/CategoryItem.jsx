@@ -3,18 +3,27 @@ import { mobile } from "../responsive";
 import {Link} from "react-router-dom";
 
 const Container = styled.div`
-  flex: 1;
-  margin: 3px;
-  height: 70vh;
-  position: relative;
+  
+
+    flex: 1;
+    margin: 5px;
+    min-width: 280px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5fbfd;
+    position: relative;
+  
+
 `;
 
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   object-fit: cover;
-  ${mobile({ height: "20vh" })}
-
+  ${mobile({ display: "none" })}
+  
 `;
 
 const Info = styled.div`
@@ -27,6 +36,7 @@ const Info = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 `;
 
 const Title = styled.h1`

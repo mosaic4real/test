@@ -10,7 +10,8 @@ import { useState } from "react";
 import { red } from "@material-ui/core/colors";
 
 
-const Container = styled.div``;
+const Container = styled.div`
+`;
 
 const Title = styled.h1`
   margin: 20px;
@@ -48,8 +49,7 @@ const ProductList = () => {
 
   const handleFilters = (e) =>{
     const value = e.target.value;
-    setFilters({
-      ...filters,
+    setFilters({...filters,
       [e.target.name]: value,
     })
   }

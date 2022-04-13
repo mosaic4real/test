@@ -5,6 +5,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
+import { mobile } from "../responsive";
 
 const Info = styled.div`
   opacity: 0;
@@ -20,6 +21,7 @@ const Info = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   cursor: pointer;
+  ${mobile({ display: "none" })}
 `;
 
 const Container = styled.div`
@@ -36,6 +38,7 @@ const Container = styled.div`
   &:hover ${Info}{
     opacity: 1;
   }
+
 `;
 
 const Circle = styled.div`
@@ -49,6 +52,7 @@ const Circle = styled.div`
 const Image = styled.img`
   height: 75%;
   z-index: 2;
+  ${mobile({ display: "none" })}
 `;
 
 const Icon = styled.div`
@@ -65,6 +69,7 @@ const Icon = styled.div`
     background-color: #e9f5f5;
     transform: scale(1.1);
   }
+  ${mobile({ display: "none" })}
 `;
 
 const Product = ({ item }) => {

@@ -59,18 +59,19 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ disaply: "none" })}
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
 const Navbar = () => {
   const quantity  = useSelector(state => state.cart.quantity)
+  
 
   return (
     <Container>
@@ -86,6 +87,9 @@ const Navbar = () => {
           <Logo>GEMOS.</Logo>
         </Center>
         <Right>
+        <Link to ="/">
+          <MenuItem>HOME</MenuItem>
+          </Link>
           <Link to ="/signup">
           <MenuItem>REGISTER</MenuItem>
           </Link>

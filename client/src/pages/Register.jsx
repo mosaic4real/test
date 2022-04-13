@@ -1,5 +1,9 @@
+import axios from "axios";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import {useState} from "react";
+import {useSelector} from "react-redux";
+
 
 const Container = styled.div`
   width: 100vw;
@@ -54,23 +58,79 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`
+
+
 const Register = () => {
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+ 
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    signUpRequest()
+  }
+
+  const signUpRequest = () => {
+    axios.post("http://localhost:3000/api/auth/register", {
+      name: name,
+      lastname: lastname,
+      email: email,
+      username: username,
+      password: password,
+      confirmPassword: confirmPassword
+    })
+    .then((response) => {
+      console.log(response);
+    });
+  }
+
+  const handleNameChange = (event) =>     {
+    setName(event.target.value)
+      }
+  const handleLastnameChange = (event) => {
+      setLastname(event.target.value)
+      }
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value)
+      }
+  const handleEmailChange = (event) =>    {
+      setEmail(event.target.value)
+      }
+  const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
+      }
+  const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value)
+      }
+
+      
+
   return (
+
+
+
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+          <Input placeholder="name"onChange={handleNameChange}/>
+          <Input placeholder="last name" onChange={handleLastnameChange}/>
+          <Input placeholder="username" onChange={handleUsernameChange}/>
+          <Input placeholder="email" onChange={handleEmailChange}/>
+          <Input placeholder="password" onChange={handlePasswordChange}/>
+          <Input placeholder="confirm password" onChange={handleConfirmPasswordChange}/>
           <Agreement>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            data in accordance with the <b>EU PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={handleSubmit}>CREATE</Button>
         </Form>
       </Wrapper>
     </Container>

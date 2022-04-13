@@ -7,18 +7,29 @@ const Container = styled.div`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-  ${mobile({ padding: "0px", flexDirection:"column" })}
-
+  // ${mobile({ padding: "0px", flexDirection:"right" })};
+  flex-wrap: wrap;
 `;
 
 const Categories = () => {
   return (
     <Container>
-      {categories.map((item) => (
+      {categories.slice(0,3).map((item) => (
         <CategoryItem item={item} key={item.id} />
       ))}
     </Container>
   );
+
+  // return (
+  //   <Container>
+  //     {categories.slice(0,8).map((item) => (
+  //     <CategoryItem item={item} key={item.id} />
+  //     ))}
+      
+  //   </Container>
+  // );
 };
+
+
 
 export default Categories;
