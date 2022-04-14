@@ -62,24 +62,17 @@ const ProductList = () => {
       <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Products:</FilterText>
+          <FilterText>Filter Product Color:</FilterText>
           <Select name = "color" onChange ={handleFilters}>
             <Option disabled>
               Color
             </Option>
             <Option>white</Option>
             <Option>black</Option>
+            <Option>brown</Option>
             <Option>red</Option>
-            <Option>blue</Option>
-            <Option>yellow</Option>
-            <Option>green</Option>
-          </Select>
-          <Select name = "size" onChange ={handleFilters}>
-            <Option disabled selected>
-              Gender
-            </Option>
-            <Option>male</Option>
-            <Option>female</Option>
+            <Option>orange</Option>
+            <Option>silver</Option>
           </Select>
         </Filter>
         <Filter>

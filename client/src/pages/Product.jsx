@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { publicRequest } from "../requestMethods";
 import {addProduct} from "../redux/cartRedux";
 import {useDispatch} from "react-redux";
+import { Link } from 'react-router-dom';
 
 
 const Container = styled.div``;
@@ -121,13 +122,29 @@ const Button = styled.button`
   }
 `;
 
+const Top = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+const TopButton = styled.button`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
 const Product = () => {
   const location = useLocation ();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
-  const [gender, setGender] = useState("");
   const dispatch = useDispatch();
 
 
@@ -151,7 +168,7 @@ const Product = () => {
 
   const handleClick = () => {
     //update cart
-    dispatch(addProduct({...product, quantity, color, gender})
+    dispatch(addProduct({...product, quantity, color})
     );
   };
 
@@ -159,6 +176,11 @@ const Product = () => {
     <Container>
       <Navbar />
       <Announcement />
+      <Top>
+          <Link to = {`/`}>
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link >
+        </Top>
       <Wrapper>
         <ImgContainer>
           <Image src= {product.img}/>
@@ -176,14 +198,6 @@ const Product = () => {
               <FilterColor color={c} key = {c} onClick= {() => setColor(c)}/>
               ))}
             </Filter>   
-            <Filter>
-              <FilterTitle>Gender</FilterTitle>
-              <FilterSize onChange={(e) =>setGender(e.target.value)}>
-                {product.gender?.map((g) =>(
-                  <FilterSizeOption key={g}>{g}</FilterSizeOption>
-               ))}
-              </FilterSize>
-            </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>

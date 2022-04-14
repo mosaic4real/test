@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import stripeCheckout from "react-stripe-checkout";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../requestMethods";
+import { Link } from 'react-router-dom';
 
 
 
@@ -96,7 +97,7 @@ const ProductColor = styled.div`
   background-color: ${(props) => props.color};
 `;
 
-const ProductSize = styled.span``;
+
 
 const PriceDetail = styled.div`
   flex: 1;
@@ -191,11 +192,9 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag</TopText>
-            {/* <TopText>Your Wishlist (0)</TopText> */}
-          </TopTexts>
+          <Link to = {`/`}>
+        <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link >
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
         <Bottom>
@@ -212,9 +211,6 @@ const Cart = () => {
                     <b>ID:</b> {product._id}
                   </ProductId>
                   <ProductColor color={product.color} />
-                  <ProductSize>
-                    <b>Gender:</b> {product.gender}
-                  </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>

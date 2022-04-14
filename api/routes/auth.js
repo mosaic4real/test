@@ -3,6 +3,7 @@ const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
+
 //REGISTER
     router.post("/register", async (req, res) => {
 
@@ -19,12 +20,11 @@ const jwt = require("jsonwebtoken");
 
   try {
 
-
     const inputPassword = req.body.password;
     const inputConfirmPassword = req.body.confirmPassword;
         
     inputPassword != inputConfirmPassword && 
-            res.status(401).json("Password not same");
+            res.status(401).json("Passwords must be same");
     
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
@@ -69,13 +69,15 @@ router.post('/login', async (req, res) => {
         );
   
         const { password, ...others } = user._doc;  
-        res.status(200).json({...others, accessToken}).redirect('/'); 
+        res.status(200).json({...others, accessToken})
+        // .redirect('/'); 
+        // // res.redirect('/')
+        // // console.log(open)
+        // // location.assign('/');
+        
         // res.redirect('/')
-        // console.log(open)
-        // location.assign('/');
-     
-
-    }catch(err){res.status(500).json(err);
+        // }
+    } catch (err){res.status(500).json(err);
         
     }
 

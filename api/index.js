@@ -28,6 +28,11 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static)
+}
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("Backend server is running!");
 });

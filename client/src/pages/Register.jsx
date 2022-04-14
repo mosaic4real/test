@@ -70,7 +70,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
- 
+  const {error}  = useSelector((state) => state.user);
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -111,11 +111,9 @@ const Register = () => {
       }
 
       
-
   return (
 
-
-
+    
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
@@ -123,12 +121,17 @@ const Register = () => {
           <Input placeholder="name"onChange={handleNameChange}/>
           <Input placeholder="last name" onChange={handleLastnameChange}/>
           <Input placeholder="username" onChange={handleUsernameChange}/>
+          <div class ="username error"> </div>
           <Input placeholder="email" onChange={handleEmailChange}/>
+          <div class ="email error"> </div>
           <Input placeholder="password" onChange={handlePasswordChange}/>
           <Input placeholder="confirm password" onChange={handleConfirmPasswordChange}/>
+          <div class ="password error"> </div>
+          {error && <Error>passwords must be same...</Error>} 
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>EU PRIVACY POLICY</b>
+
           </Agreement>
           <Button onClick={handleSubmit}>CREATE</Button>
         </Form>
@@ -136,5 +139,6 @@ const Register = () => {
     </Container>
   );
 };
+
 
 export default Register;

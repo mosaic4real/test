@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-  // ${mobile({ padding: "0px", flexDirection:"right" })};
+  // ${mobile({ padding: "0px", flexDirection:"column" })};
   flex-wrap: wrap;
 `;
 
